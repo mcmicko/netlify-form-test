@@ -1,29 +1,85 @@
-import * as React from "react"
-import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
+import React, { useState } from "react"
+import { navigate } from "gatsby"
 
-import Layout from "../components/layout"
-import Seo from "../components/seo"
+const IndexPage = () => {
+  const [formState, setFormState] = useState({
+    name: "",
+    email: "",
+    message: "",
+  })
 
-const IndexPage = () => (
-  <Layout>
-    <Seo title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <StaticImage
-      src="../images/gatsby-astronaut.png"
-      width={300}
-      quality={95}
-      formats={["AUTO", "WEBP", "AVIF"]}
-      alt="A Gatsby astronaut"
-      style={{ marginBottom: `1.45rem` }}
-    />
-    <p>
-      <Link to="/page-2/">Go to page 2</Link> <br />
-      <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-    </p>
-  </Layout>
-)
+  const encode = data => {
+    return Object.keys(data)
+      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+      .join("&")
+  }
+
+  const handleChange = e => {
+    setFormState({ ...formState, [e.target.name]: e.target.value })
+  }
+
+  const handleSubmit = event => {
+    event.preventDefault()
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({
+        "form-name": "contact",
+        ...formState,
+      }),
+    })
+      .then(() => navigate("/page-2/"))
+      .catch(error => alert(error))
+  }
+
+  return (
+    <>
+      <div id="form-center">
+        <form
+          onSubmit={handleSubmit}
+          id="contact-form"
+          name="contact"
+          method="post"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+        >
+          <input type="hidden" name="form-name" value="contact" />
+
+          <input
+            id="form-input"
+            type="text"
+            name="name"
+            onChange={handleChange}
+            value={formState.name}
+            required
+            placeholder="your name"
+          />
+          <input
+            id="form-input"
+            type="email"
+            name="email"
+            onChange={handleChange}
+            value={formState.email}
+            required
+            placeholder="your email"
+          />
+          <textarea
+            id="form-input"
+            name="message"
+            onChange={handleChange}
+            value={formState.message}
+            rows="9"
+            required
+            placeholder="write something"
+          />
+
+          <button id="form-input" type="submit">
+            Send to Email
+          </button>
+        </form>
+      </div>
+    </>
+  )
+}
 
 export default IndexPage
