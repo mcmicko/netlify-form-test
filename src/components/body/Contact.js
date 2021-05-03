@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { navigate } from "gatsby"
+import { FaFacebook, FaTwitter, FaGithub } from "react-icons/fa"
 
 const Contact = () => {
   const [formState, setFormState] = useState({
@@ -74,9 +75,36 @@ const Contact = () => {
           />
 
           <button id="form-input" type="submit">
-            Send to Email
+            Send me Email
           </button>
         </form>
+      </div>
+
+      <div className="social-group">
+        <a
+          id="facebook"
+          className="social"
+          href="https://www.facebook.com/milos.mandic1"
+          target="_blank"
+        >
+          <FaFacebook />
+        </a>
+        <a
+          id="twitter"
+          className="social"
+          href="https://twitter.com/mcmickoo"
+          target="_blank"
+        >
+          <FaTwitter />
+        </a>
+        <a
+          id="instagram"
+          className="social"
+          href="https://github.com/mcmicko"
+          target="_blank"
+        >
+          <FaGithub />
+        </a>
       </div>
     </>
   )

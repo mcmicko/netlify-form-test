@@ -106,6 +106,7 @@ nav li {
   border: 2px solid rgb(3, 141, 255);
   box-shadow: var(--shadow);
 }
+
 #my-name {
   display: flex;
   align-items: center;
@@ -123,7 +124,12 @@ nav li {
   height: 100vh;
   width: 100%;
 }
-
+@media (max-width: 1122px) {
+  #my-image {
+    height: 300px;
+    width: 300px;
+  }
+}
 @media (max-width: 500px) {
   .header {
     flex-direction: column-reverse;
@@ -548,16 +554,17 @@ nav li {
 #project3:hover {
   width: 500px;
   height: 500px;
+  z-index: 100;
 }
 #project2 {
   position: fixed;
   top: 45%;
   right: 45%;
-  width: 100px;
-  height: 100px;
+  width: 250px;
+  height: 250px;
   overflow: hidden;
   z-index: -100;
-  background: url(../images/port2.png);
+  background: url(../images/marmite-recipe.png);
   background-position: center;
   background-size: cover;
   border-radius: 50%;
@@ -567,6 +574,47 @@ nav li {
 }
 #project2:hover {
   transform: scale(2);
+  font-size: 1.5rem;
+}
+#project4 {
+  position: fixed;
+  bottom: 10%;
+  right: 15%;
+  width: 250px;
+  height: 250px;
+  overflow: hidden;
+  z-index: -99;
+  background: url(../images/Lireddit-1.png);
+  background-position: center;
+  background-size: cover;
+  border-radius: 50%;
+  border: 2px solid rgb(3, 141, 255);
+  box-shadow: var(--shadow);
+  transition: all 250ms ease;
+}
+#project4:hover {
+  width: 500px;
+  height: 500px;
+}
+#project5 {
+  position: fixed;
+  bottom: 10%;
+  left: 15%;
+  width: 250px;
+  height: 250px;
+  overflow: hidden;
+  z-index: -99;
+  background: url(../images/.NET-Core-Angular-Dashboard.png);
+  background-position: center;
+  background-size: cover;
+  border-radius: 50%;
+  border: 2px solid rgb(3, 141, 255);
+  box-shadow: var(--shadow);
+  transition: all 250ms ease;
+}
+#project5:hover {
+  width: 500px;
+  height: 500px;
 }
 .info {
   display: flex;
@@ -607,7 +655,7 @@ nav li {
 }
 .info2:hover {
   opacity: 1;
-  font-size: 8px;
+  font-size: 0.8rem;
 }
 .info2 > i:hover {
   font-size: 8px;
