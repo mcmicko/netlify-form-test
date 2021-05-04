@@ -104,7 +104,7 @@ export default class Project extends Component {
             </p>
             <a
               target="_blank"
-              href="https://nextjs-contentful-anphqm1lp-mcmicko.vercel.app/"
+              href="https://nextjs-contentful-zeta.vercel.app/"
             >
               <TiArrowForwardOutline
                 size="3rem"
